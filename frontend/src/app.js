@@ -17,6 +17,8 @@ function formatBytes(bytes, decimals = 2) {
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
 
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:8000' : 'https://YOUR-DEPLOYED-BACKEND-URL.com';
+
 analyzeBtn.addEventListener('click', async () => {
     const url = urlInput.value.trim();
     if (!url) {
@@ -28,7 +30,7 @@ analyzeBtn.addEventListener('click', async () => {
         analyzeBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Analyzing...';
         analyzeBtn.disabled = true;
 
-        const response = await fetch('http://localhost:8000/analyze-url', {
+        const response = await fetch(`${BACKEND_URL}/analyze-url`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,7 +64,7 @@ watchDownloadBtn.addEventListener('click', () => {
     if (!url) return;
 
     videoContainer.classList.remove('hidden');
-    videoPlayer.src = `http://localhost:8000/stream?url=${encodeURIComponent(url)}`;
+    videoPlayer.src = `${BACKEND_URL}/stream?url=${encodeURIComponent(url)}`;
 });
 
 

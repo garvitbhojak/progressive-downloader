@@ -64,3 +64,5 @@ watchDownloadBtn.addEventListener('click', () => {
     videoContainer.classList.remove('hidden');
     videoPlayer.src = `http://localhost:8000/stream?url=${encodeURIComponent(url)}`;
 });
+
+

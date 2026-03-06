@@ -1,9 +1,10 @@
 import streamlit as st
 import requests
 
-st.set_page_config(page_title="Progressive Video Downloader", layout="centered")
+st.set_page_config(page_title='Moviez Downloader', page_icon='🍿', layout='centered')
 
-st.title("Progressive Video Downloader")
+st.title("Moviez Downloader")
+st.divider()
 
 url = st.text_input("Enter Video URL:", placeholder="https://example.com/video.mp4")
 
